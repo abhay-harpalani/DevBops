@@ -1,0 +1,4 @@
+{
+	"appService.defaultWebAppToDeploy": "/subscriptions/2ad8918e-e550-4ada-a1f1-2d7db9980faf/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/hackillinois2024musicProject",
+	"appService.deploySubpath": "."
+}
