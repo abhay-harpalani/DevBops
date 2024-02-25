@@ -13,15 +13,13 @@ function redirectToPlayback() {
 }
 
 
-questions = ["Do you like lyrics in your music?",
-"Do you like songs with or without lyrics for documenting?",
+questions = ["Do you like songs with or without lyrics for documenting?",
 "Do you like songs with or without lyrics for ideating?",
 "Do you like songs with or without lyrics for coding?",
 "Do you like listening to loud music when documenting?",
 "Do you like listening to loud music when ideating?",
 "Do you like listening to loud music when coding?"]
-answers = [["Yes", "No"],
-["With", "Without"],
+answers = [["With", "Without"],
 ["With", "Without"],
 ["With", "Without"],
 ["Yes", "No"],
