@@ -22,6 +22,27 @@ h1, h2, h3, h4, p {
 	padding: 0;
 }
 
+/* unvisited link */
+a:link {
+  color: black;
+}
+
+/* visited link */
+a:visited {
+  color: black;
+}
+
+/* mouse over link */
+a:hover {
+  color: maroon;
+}
+
+/* selected link */
+a:active {
+  color: red;
+}
+
+
 .joly-regular {
 	font-family: "joly-display", Arial, Helvetica, sans-serif;
 	font-weight: 600;
@@ -32,6 +53,12 @@ h1, h2, h3, h4, p {
 	font-family: "joly-display", Arial, Helvetica, sans-serif;
 	font-weight: 400;
 	font-style: italic;
+}
+
+.joly-thin {
+	font-family: "joly-display", Arial, Helvetica, sans-serif;
+	font-weight: 400;
+	font-style: normal;
 }
 
 .jetbrains-regular {
@@ -65,28 +92,55 @@ h1, h2, h3, h4, p {
   transform: translate(-50%, -50%);
 }
 
-#main-center-button-wrapper {
+.main-center-button-wrapper {
 	margin-top: 1.5rem;
 }
 
-#main-center-button {
-	border: solid black 1px;
+.main-center-button {
+	border: solid black 2.5px;
 	width: fit-content;
 	padding: 1rem;
 	border-radius: 1000rem;
 	margin: auto;
 	display: flex;
+	text-align: center;
 }
 
 /* right arrow icon */
-#a-logo-wrapper {
+.right-arrow-wrapper {
 	width: 40px;
 	height: 40px;
 	margin-left: 0.75rem;
 }
 
-#a-logo-img-wrapper img {
+.right-arrow-img-wrapper img {
 	width: 100%;
 	object-fit: contain;
 	margin: auto;
+}
+
+/* quiz */
+.centered-div-quiz {
+	position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.quiz-button {
+	min-width: 7.5rem;
+}
+
+.quiz-buttons {
+	width: fit-content;
+	display: flex;
+	flex-direction: row;
+	gap: 2rem;
+	margin: auto;
+	padding-top: 1rem;
+}
+
+.quiz-button-text {
+	width: 100%;
 }
