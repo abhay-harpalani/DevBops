@@ -23,7 +23,7 @@ function getCookie(cname) {
   return "";
 }
 
-function delete_cookie( name, path, domain ) {
+function delete_cookie(name, path, domain) {
   if (getCookie(name)) {
     document.cookie = name + "=" +
       ((path) ? ";path="+path:"")+
@@ -32,12 +32,13 @@ function delete_cookie( name, path, domain ) {
   }
 }
 
-function switch_playlist(playlist_num) {
-	// TODO: write switch_playlist function
+function get_playlist_id(playlist_number) {
+	console.log("getting playlist ", playlist_number)
+	// TODO: get playlist id from cookies here
 }
 
-function get_playlist_name(playlist_number) {
-	
+function switch_playlist(playlist_num) {
+	// TODO: write switch_playlist function
 }
 
 /*
@@ -48,20 +49,26 @@ function get_playlist_name(playlist_number) {
 currentPlaylist = 0
 
 function onloadFunc() {
-	document.getElementById("quiz-button-left").addEventListener("click", function() {
-		quizButtonClicked(0)
+	document.getElementById("playback-button-left").addEventListener("click", function() {
+		playbackButtonClicked(0)
 		console.log("left clicked")
 	});
 	
-	document.getElementById("quiz-button-right").addEventListener("click", function() {
-		quizButtonClicked(1)
+	document.getElementById("playback-button-mid").addEventListener("click", function() {
+		playbackButtonClicked(1)
+		console.log("mid clicked")
+	});
+	
+	document.getElementById("playback-button-right").addEventListener("click", function() {
+		playbackButtonClicked(2)
 		console.log("right clicked")
 	});
 }
 
-// buttonNumber = 0 means left  (chill)
-// buttonNumber = 1 means mid   ()
-// buttonNumber = 2 means right ()
+// buttonNumber = 0 means left  (Documenting/Chill)
+// buttonNumber = 1 means mid   (Ideating/Focused)
+// buttonNumber = 2 means right (Coding/High Energy)
 function playbackButtonClicked(buttonNumber) {
-
+	get_playlist_id(buttonNumber)
+	switch_playlist(buttonNumber)
 }
