@@ -13,11 +13,21 @@ function redirectToPlayback() {
 }
 
 
-questions = ["Would you like lyrics in your music?",
-"What genre of music do you listen to to study (we may need to provide genres given by spotify)",
-"Would you like your music to be lively, quiet, or brown noise (add categories this is just what I use)",
-"Would you like your music to be slow, moderate, or fast?"
-]
+questions = ["Do you like lyrics in your music?",
+"Do you like songs with or without lyrics for documenting?",
+"Do you like songs with or without lyrics for ideating?",
+"Do you like songs with or without lyrics for coding?",
+"Do you like listening to loud music when documenting?",
+"Do you like listening to loud music when ideating?",
+"Do you like listening to loud music when coding?"]
+answers = [["Yes", "No"],
+["With", "Without"],
+["With", "Without"],
+["With", "Without"],
+["Yes", "No"],
+["Yes", "No"],
+["Yes", "No"]]
+
 questionNumber = 0
 
 function onloadFunc() {
@@ -38,7 +48,7 @@ function onloadFunc() {
 function quizButtonClicked(side) {
 	// set cookieName to question number
 	let cookieName = "question_" + questionNumber + "_answer"
-	// ex: question_number_0_answer
+	// ex: question_0_answer
 	let cookieVal = side;
 	// set the cookie to whatever answer the user gave
 	setCookie(cookieName, cookieVal)
@@ -48,6 +58,11 @@ function quizButtonClicked(side) {
 		redirectToPlayback()
 	} else {
 		newContent = questions[questionNumber]
+		newAnswer1 = answers[questionNumber][0]
+		newAnswer2 = answers[questionNumber][1]
+		
 		document.getElementById("quiz-question").textContent=newContent
+		document.getElementById("quiz-button-left-text").textContent=newAnswer1
+		document.getElementById("quiz-button-right-text").textContent=newAnswer2
 	}
 }

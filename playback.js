@@ -7,21 +7,47 @@ function setCookie(name, value) {
 	document.cookie = name + "=" + value + expires + "; path=/";
 }
 
-
-function redirectToPlayback() {
-	window.location.href = './playback.html';
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
 }
 
+function delete_cookie( name, path, domain ) {
+  if (getCookie(name)) {
+    document.cookie = name + "=" +
+      ((path) ? ";path="+path:"")+
+      ((domain)?";domain="+domain:"") +
+      ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
+  }
+}
 
-questions = ["Would you like lyrics in your music?",
-"What genre of music do you listen to to study (we may need to provide genres given by spotify)",
-"Would you like your music to be lively, quiet, or brown noise (add categories this is just what I use)",
-"Would you like your music to be slow, moderate, or fast?"
-]
-questionNumber = 0
+function switch_playlist(playlist_num) {
+	// TODO: write switch_playlist function
+}
+
+function get_playlist_name(playlist_number) {
+	
+}
+
+/*
+0 - chill
+1 - focused
+2 - high energy
+*/
+currentPlaylist = 0
 
 function onloadFunc() {
-	console.log("questionNumber", questionNumber)
 	document.getElementById("quiz-button-left").addEventListener("click", function() {
 		quizButtonClicked(0)
 		console.log("left clicked")
@@ -33,21 +59,9 @@ function onloadFunc() {
 	});
 }
 
-// side = 0 means left / yes
-// side = 1 means right / no
-function quizButtonClicked(side) {
-	// set cookieName to question number
-	let cookieName = "question_" + questionNumber + "_answer"
-	// ex: question_number_0_answer
-	let cookieVal = side;
-	// set the cookie to whatever answer the user gave
-	setCookie(cookieName, cookieVal)
-	// increment questionNumber
-	questionNumber += 1
-	if (questionNumber === questions.length) {
-		redirectToPlayback()
-	} else {
-		newContent = questions[questionNumber]
-		document.getElementById("quiz-question").textContent=newContent
-	}
+// buttonNumber = 0 means left  (chill)
+// buttonNumber = 1 means mid   ()
+// buttonNumber = 2 means right ()
+function playbackButtonClicked(buttonNumber) {
+
 }
