@@ -1,0 +1,62 @@
+/* PlaylistsWithTracks.css */
+.container {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .playlist-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .button {
+    background-color: #1DB954; /* Spotify Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 20px;
+  }
+  
+  .button:hover {
+    background-color: #1ed760;
+  }
+  
+  .playlist-item, .track-item {
+    margin-bottom: 10px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .track-info {
+    margin-top: 10px;
+  }
+
+  .track-item a {
+    background-color: #1DB954; /* Spotify Green */
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 15px;
+    display: inline-block;
+    margin-top: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .track-item a:hover, .track-item a:focus {
+    background-color: #17a346;
+    transform: scale(1.05);
+    text-decoration: none; /* In case you want to remove underline on hover */
+  }

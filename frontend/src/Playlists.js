@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Playlist.css'; 
 
 const PlaylistsWithTracks = () => {
   const [playlists, setPlaylists] = useState([]);
@@ -66,43 +67,32 @@ const PlaylistsWithTracks = () => {
   };
 
   return (
-    <div>
-      <button onClick={redirectToQuiz}>Take the Quiz</button> {/* Add this button */}å
-       {/* <button onClick={redirectToRecommendation}>View Recommendations</button> */}
-      <h2>Your Playlists</h2>
-      {error && <p>Error: {error}</p>}
-      {playlists.map((playlist) => (
-        <div key={playlist.id} onClick={() => fetchPlaylistTracks(playlist.id)}>
-          <h3>{playlist.name}</h3>
-        </div>
-      ))}
-      <div>
+    <div className="container">
+      <div className="header">
         <h2>Your Playlists</h2>
-        {playlists.map(playlist => (
-          <div key={playlist.id}>
+        <button onClick={redirectToQuiz} className="button">Take the Quiz</button>
+      </div>
+      {error && <p className="error">{error}</p>}
+      <div className="playlist-list">
+        {playlists.map((playlist) => (
+          <div key={playlist.id} className="playlist-item" onClick={() => fetchPlaylistTracks(playlist.id)}>
             <h3>{playlist.name}</h3>
-            <button onClick={() => fetchPlaylistTracks(playlist.id)}>View Tracks</button>
+            <button className="button" onClick={() => fetchPlaylistTracks(playlist.id)}>View Tracks</button>
           </div>
         ))}
       </div>
 
-      {/* track part here */}
-        <div>
-          <h2>Tracks</h2>
-          {selectedTracks.map((trackItem, index) => {
-            const { track } = trackItem;
-
-            return (
-              <div key={index}>
-                <p>
-                  <strong>ID:</strong> {track.id} <br />
-                  localStorage.setItem('track_ids', token);
-                  <strong>Track:</strong> {track.name} <br />
-                  <strong>Artists:</strong> {track.artists.map(artist => artist.name).join(', ')}
-                </p>
-              </div>
-            );
-          })}
+      <div className="track-list">
+        <h2>Tracks</h2>
+        {selectedTracks.map((trackItem, index) => (
+          <div key={index} className="track-item">
+            <p>
+              {/* <strong>Track:</strong> {trackItem.track.name} <br /> */}
+              <strong>Artists:</strong> {trackItem.track.artists.map(artist => artist.name).join(', ')} <br />
+              <strong>Album:</strong> <a href={trackItem.track.album.external_urls.spotify} target="_blank" rel="noopener noreferrer" className="album-link">{trackItem.track.album.name}</a>
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './Playback.css'; 
 
 const Playback = () => {
   const [recommendations, setRecommendations] = useState([]);
@@ -37,17 +38,17 @@ const Playback = () => {
   }, [energyLevel]); // Dependency on energyLevel to re-fetch when it changes
 
   return (
-    <div>
-      <h2>Recommended Tracks</h2>
-      {/* Buttons to select energy level */}
-      <button onClick={() => setEnergyLevel('low')}>Chill / Docs</button>
-      <button onClick={() => setEnergyLevel('mid')}>Middle Energy / Ideating</button>
-      <button onClick={() => setEnergyLevel('high')}>High Energy / Coding</button>
-      <ul>
+    <div className="container">
+      <div className="energy-buttons">
+        <button className="button" onClick={() => setEnergyLevel('low')}>Chill / Docs</button>
+        <button className="button" onClick={() => setEnergyLevel('mid')}>Middle Energy / Ideating</button>
+        <button className="button" onClick={() => setEnergyLevel('high')}>High Energy / Coding</button>
+      </div>
+      <ul className="track-list">
         {recommendations.map(track => (
-          <li key={track.id}>
+          <li key={track.id} className="track-item">
             {track.name} by {track.artists.map(artist => artist.name).join(', ')} - 
-            <a href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer">Listen on Spotify</a>
+            <a href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer" className="track-link">Listen on Spotify</a>
           </li>
         ))}
       </ul>

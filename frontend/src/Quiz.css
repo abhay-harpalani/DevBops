@@ -1,92 +1,41 @@
-
-font-face {
-	font-family: "joly-display", sans-serif;
-	font-weight: 400;
-	font-style: italic;
-}
-
-body {
-	background-image: url("assets/images/desktop_bg.png");
-	height: 100vh; /* Set the height of the body to 100% of the viewport height */
-	background-position: center; /* Center the image */
-	background-repeat: no-repeat; /* Do not repeat the image */
-	background-size: cover; /* Resize the background image to cover the entire container */
-}
-
-h1, h2, h3, h4, p {
-	font-style: inherit;
-	font-weight: inherit;
-	letter-spacing: inherit;
-	font-size: inherit;
-	margin: 0;
-	padding: 0;
-}
-
-.joly-regular {
-	font-family: "joly-display", Arial, Helvetica, sans-serif;
-	font-weight: 600;
-	font-style: normal;
-}
-
-.joly-italic-thin {
-	font-family: "joly-display", Arial, Helvetica, sans-serif;
-	font-weight: 400;
-	font-style: italic;
-}
-
-.jetbrains-regular {
-  font-family: "JetBrains Mono", monospace;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.font-large {
-	font-size: 5rem;
-}
-
-.font-medium {
-	font-size: 2rem;
-}
-
-.font-small {
-	font-size: 1.5rem;
-}
-
-.text-align-center {
-	text-align: center;
-}
-
-.centered-div {
-	position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-#main-center-button-wrapper {
-	margin-top: 1.5rem;
-}
-
-#main-center-button {
-	border: solid black 1px;
-	width: fit-content;
-	padding: 1rem;
-	border-radius: 1000rem;
-	margin: auto;
+/* Quiz.css */
+.centered-div-quiz {
 	display: flex;
-}
-
-/* right arrow icon */
-#a-logo-wrapper {
-	width: 40px;
-	height: 40px;
-	margin-left: 0.75rem;
-}
-
-#a-logo-img-wrapper img {
-	width: 100%;
-	object-fit: contain;
-	margin: auto;
-}
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	font-family: 'Arial', sans-serif;
+  }
+  
+  .font-large {
+	font-size: 2rem;
+	margin-bottom: 1rem;
+  }
+  
+  .font-medium {
+	font-size: 1.5rem;
+	margin-bottom: 2rem;
+  }
+  
+  .quiz-buttons {
+	display: flex;
+	gap: 20px;
+  }
+  
+  .quiz-button {
+	background-color: #1DB954; /* Spotify Green */
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 20px;
+	cursor: pointer;
+	font-size: 1rem;
+	font-weight: bold;
+	transition: background-color 0.3s;
+  }
+  
+  .quiz-button:hover {
+	background-color: #17a346;
+  }
+  

@@ -1,0 +1,57 @@
+/* Playback.css */
+.container {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .energy-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .button {
+    background-color: #1DB954; /* Spotify Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 20px;
+  }
+  
+  .button:hover {
+    background-color: #1ed760;
+  }
+  
+  .track-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .track-item {
+    margin-bottom: 10px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .track-link {
+    color: #1DB954; /* Spotify Green */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .track-link:hover {
+    text-decoration: underline;
+  }
+  
