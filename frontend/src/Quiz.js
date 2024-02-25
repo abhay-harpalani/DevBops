@@ -22,34 +22,26 @@ const answers = [
 
 const Quiz = () => {
   const [questionNumber, setQuestionNumber] = useState(0);
+  const [quizAnswers, setQuizAnswers] = useState([]); // State to store answers
   const navigate = useNavigate();
 
   const handleAnswer = (side) => {
-    // side = 0 for left/yes, side = 1 for right/no
-    // Here you could also handle the answer, e.g., storing it for later use
+    // Update quizAnswers with the selected answer
+    const updatedAnswers = [...quizAnswers, answers[questionNumber][side]];
+    setQuizAnswers(updatedAnswers);
+
     const nextQuestionNumber = questionNumber + 1;
     if (nextQuestionNumber < questions.length) {
       setQuestionNumber(nextQuestionNumber);
     } else {
-      // Redirect to the desired page when the quiz is completed
+      // Log the quiz results before navigating away
+      console.log("Quiz Results:", updatedAnswers);
       navigate('/playback'); // Adjust this path as needed
     }
   };
 
   return (
     <div className="centered-div-quiz text-align-center">
-	<head>
-      <meta charset="utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <title>DevBops | Custom Playlists for Developers</title>
-      <link rel="stylesheet" href="https://use.typekit.net/clj0cwu.css" />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet" />
-      <link rel="stylesheet" href="./Quiz.css" />
-      <script src="%PUBLIC_URL%/script.js" type="text/javascript"></script>
-    </head>
       <div className="joly-regular font-large">
         <h1>DevBops</h1>
       </div>
