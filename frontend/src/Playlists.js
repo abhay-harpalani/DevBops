@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-
-// Inside your component's return statement
-<Link to="/recommendations">View Recommendations</Link>
-
+import { useNavigate } from 'react-router-dom';
 
 const PlaylistsWithTracks = () => {
   const [playlists, setPlaylists] = useState([]);
   const [selectedTracks, setSelectedTracks] = useState([]);
   const [error, setError] = useState('');
+  const navigate = useNavigate(); // Initialize useNavigate
+
 
   const token = new URLSearchParams(window.location.search).get('access_token');
 
@@ -38,6 +36,11 @@ const PlaylistsWithTracks = () => {
     if (token) fetchPlaylists();
   }, [token]);
 
+  const redirectToQuiz = () => {
+    navigate('/quiz'); // Use navigate to change the route to /quiz
+  };
+
+
   // Function to fetch tracks for a selected playlist
   const fetchPlaylistTracks = async (playlistId) => {
     try {
@@ -63,6 +66,8 @@ const PlaylistsWithTracks = () => {
 
   return (
     <div>
+      <button onClick={redirectToQuiz}>Take the Quiz</button> {/* Add this button */}å
+       {/* <button onClick={redirectToRecommendation}>View Recommendations</button> */}
       <h2>Your Playlists</h2>
       {error && <p>Error: {error}</p>}
       {playlists.map((playlist) => (
