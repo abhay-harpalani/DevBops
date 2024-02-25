@@ -22,34 +22,61 @@ const answers = [
 
 const Quiz = () => {
   const [questionNumber, setQuestionNumber] = useState(0);
+  const [quizAnswers, setQuizAnswers] = useState([]); // State to store answers
   const navigate = useNavigate();
 
   const handleAnswer = (side) => {
-    // side = 0 for left/yes, side = 1 for right/no
-    // Here you could also handle the answer, e.g., storing it for later use
+    // Update quizAnswers with the selected answer
+    const updatedAnswers = [...quizAnswers, side];
+    setQuizAnswers(updatedAnswers);
+
     const nextQuestionNumber = questionNumber + 1;
     if (nextQuestionNumber < questions.length) {
       setQuestionNumber(nextQuestionNumber);
     } else {
-      // Redirect to the desired page when the quiz is completed
+      // Log the quiz results before navigating away
+      console.log("Quiz Results:", updatedAnswers);
+      // each array documenting, ideating, coding
+      var instrumentalness_min = [];
+      var instrumentalness_max = [];
+      var loudness_min = [];
+      var loudness_max = [];
+      // yes left = 0, no right = 1
+      for (let i = 0; i < 3; i++) {
+        if (updatedAnswers[i] == 0) { // yes
+          instrumentalness_min.push(0.5);
+          instrumentalness_max.push(1);
+        } else {
+          instrumentalness_min.push(0);
+          instrumentalness_max.push(0.5);
+        }
+
+        if (updatedAnswers[i+3] == 0) { // yes
+          loudness_min.push(0.5);
+          loudness_max.push(1);
+        } else {
+          loudness_min.push(0);
+          loudness_max.push(0.5);
+        }
+      }
+      console.log("instrumentalness min documenting: ", instrumentalness_min[0])
+      console.log("instrumentalness min ideating: ", instrumentalness_min[1])
+      console.log("instrumentalness min coding: ", instrumentalness_min[2])
+      console.log("instrumentalness max documenting: ", instrumentalness_max[0])
+      console.log("instrumentalness max ideating: ", instrumentalness_max[1])
+      console.log("instrumentalness max coding: ", instrumentalness_max[2])
+      console.log("loudness min documenting: ", instrumentalness_min[0])
+      console.log("loudness min ideating: ", instrumentalness_min[1])
+      console.log("loudness min coding: ", instrumentalness_min[2])
+      console.log("loudness max documenting: ", instrumentalness_max[0])
+      console.log("loudness max ideating: ", instrumentalness_max[1])
+      console.log("loudness max coding: ", instrumentalness_max[2])
       navigate('/playback'); // Adjust this path as needed
     }
   };
 
   return (
     <div className="centered-div-quiz text-align-center">
-	<head>
-      <meta charset="utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <title>DevBops | Custom Playlists for Developers</title>
-      <link rel="stylesheet" href="https://use.typekit.net/clj0cwu.css" />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet" />
-      <link rel="stylesheet" href="./Quiz.css" />
-      <script src="%PUBLIC_URL%/script.js" type="text/javascript"></script>
-    </head>
       <div className="joly-regular font-large">
         <h1>DevBops</h1>
       </div>
