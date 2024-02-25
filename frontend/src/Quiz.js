@@ -4,39 +4,55 @@ import './Quiz.css';
 
 const questions = [
   "Do you like songs with or without lyrics for documenting?",
-  "Do you like songs with or without lyrics for ideating?",
+  "Do you like songs with or without lyrics for testing?",
   "Do you like songs with or without lyrics for coding?",
   "Do you like listening to loud music when documenting?",
-  "Do you like listening to loud music when ideating?",
+  "Do you like listening to loud music when testing?",
   "Do you like listening to loud music when coding?"
 ];
 
 const answers = [
+  ["With", "Without"], // 0 for With: 0.5 - 1.0, 1 for Without: 0 - 0.5
   ["With", "Without"],
   ["With", "Without"],
-  ["With", "Without"],
-  ["Yes", "No"],
+  ["Yes", "No"], // 0 for Yes: loudness >= -7.5, 1 for No: loudness <= -7.5
   ["Yes", "No"],
   ["Yes", "No"]
 ];
 
 const Quiz = () => {
   const [questionNumber, setQuestionNumber] = useState(0);
-  const [quizAnswers, setQuizAnswers] = useState([]); // State to store answers
+  const [quizResults, setQuizResults] = useState({instrumentalness: [], loudness: []});
   const navigate = useNavigate();
 
   const handleAnswer = (side) => {
-    // Update quizAnswers with the selected answer
-    const updatedAnswers = [...quizAnswers, answers[questionNumber][side]];
-    setQuizAnswers(updatedAnswers);
+    // Interpret the answer for instrumentalness or loudness
+    let value;
+    if (questionNumber < 3) { // First 3 questions for instrumentalness
+      value = side === 0 ? [0.5, 1.0] : [0, 0.5];
+      setQuizResults(prevResults => ({
+        ...prevResults,
+        instrumentalness: [...prevResults.instrumentalness, ...value]
+      }));
+    } else { // Next 3 questions for loudness
+      value = side === 0 ? [0.5, 1] : [0, 0.5]; // Assuming -30 as a lower bound for "No"
+      setQuizResults(prevResults => ({
+        ...prevResults,
+        loudness: [...prevResults.loudness, value[0]]
+      }));
+    }
 
+    // Navigate or move to the next question
     const nextQuestionNumber = questionNumber + 1;
     if (nextQuestionNumber < questions.length) {
       setQuestionNumber(nextQuestionNumber);
     } else {
-      // Log the quiz results before navigating away
-      console.log("Quiz Results:", updatedAnswers);
-      navigate('/playback'); // Adjust this path as needed
+      // Calculate averages and log results
+      const avgInstrumentalness = quizResults.instrumentalness.reduce((a, b) => a + b, 0) / quizResults.instrumentalness.length;
+      const avgLoudness = quizResults.loudness.reduce((a, b) => a + b, 0) / quizResults.loudness.length;
+      console.log(`Average Instrumentalness: ${avgInstrumentalness}`);
+      console.log(`Average Loudness: ${avgLoudness}`);
+      navigate('/playback');
     }
   };
 
@@ -57,3 +73,4 @@ const Quiz = () => {
 };
 
 export default Quiz;
+

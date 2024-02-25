@@ -9,6 +9,7 @@ const PlaylistsWithTracks = () => {
 
 
   const token = new URLSearchParams(window.location.search).get('access_token');
+  localStorage.setItem('spotify_access_token', token);
 
   // Function to fetch playlists
   const fetchPlaylists = async () => {
@@ -95,6 +96,7 @@ const PlaylistsWithTracks = () => {
               <div key={index}>
                 <p>
                   <strong>ID:</strong> {track.id} <br />
+                  localStorage.setItem('track_ids', token);
                   <strong>Track:</strong> {track.name} <br />
                   <strong>Artists:</strong> {track.artists.map(artist => artist.name).join(', ')}
                 </p>
