@@ -1,1 +1,1 @@
-The project is a recommendation applicaiotn that asks questions to the user and based on those answers curates a playlist for different aspects of programming such as reading, coding, and testing to maximize productivity
+DevBops is a song recommendation website and VS Code plugin to create custom playlists for developers. Created by Sally Xue, Abhay Harpalani, Anushree Tibrewal, and Suchit Bapatla at [HackIllinois 2024](https://hackillinois.org).
